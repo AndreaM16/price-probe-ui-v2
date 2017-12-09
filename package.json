@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "npm run puggy & ng serve --aot",
+    "dev": "npm run puggy & ng serve --aot --proxy-config proxy.config.json",
     "puggy": "pug src -P -w",
     "pug": "pug src -P",
     "build": "ng build",
