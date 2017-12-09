@@ -1,8 +1,0 @@
-{
-  "/localhost:8080" : {
-    "target" : "http://54.194.199.230:8080",
-    "secure" : false,
-    "logLevel" : "debug",
-    "changeOrigin": true
-  }
-}
