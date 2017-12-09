@@ -3,8 +3,6 @@ import { RouterModule } from '@angular/router';
 
 /** App Components **/
 import { PagesComponent } from './pages.component';
-import { HomeComponent } from './home/home.component';
-import { ItemComponent } from './item/item.component';
 
 @NgModule({
   imports: [
@@ -14,8 +12,8 @@ import { ItemComponent } from './item/item.component';
         component: PagesComponent,
         children: [
           { path: '', redirectTo: 'home', pathMatch: 'full' },
-          { path: 'home', component: HomeComponent },
-          { path: 'item', component: ItemComponent },
+          { path: 'home', loadChildren: './home/home.module#HomeModule' },
+          { path: 'item', loadChildren: './item/item.module#ItemModule' },
         ]
       }
     ])
