@@ -4,5 +4,5 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Find an item by PID or URL . . ."
+msgid "Find an details by PID or URL . . ."
 msgstr ""

@@ -12,5 +12,5 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: it_IT\n"
 
-msgid "Find an item by PID or URL . . ."
+msgid "Find an details by PID or URL . . ."
 msgstr "Cerca un oggetto tramite PID o URL . . ."
