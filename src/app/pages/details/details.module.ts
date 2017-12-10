@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 
 /** App Components **/
-import { ItemComponent } from './item.component';
+import { DetailsComponent } from './details.component';
 
 /** App Routing **/
-import { ItemRoutingModule } from './item.routing.module';
+import { DetailsRoutingModule } from './details.routing.module';
 
 @NgModule({
   declarations: [
-    ItemComponent
+    DetailsComponent
   ],
   imports: [
-    ItemRoutingModule
+    DetailsRoutingModule
   ]
 })
-export class ItemModule { }
+export class DetailsModule { }
