@@ -1,13 +1,17 @@
-html {
-  min-height: 100%;
-  position: relative;
-}
-
 body {
-  margin-top: 60px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  flex:1;
 }
 
-.item-container {
-  margin-top: 5%;
+header {
+  flex: 1.5;
+}
+
+main {
+  flex: 7;
+}
+
+footer {
+  flex: 1.5;
 }
