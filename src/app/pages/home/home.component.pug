@@ -1,1 +1,10 @@
-h1 Home
+div.item-container.margin-top-5
+  div.row
+    div.col-lg-12
+      h3 {{ 'Items' | translate }}
+  div.row.text-center
+    ng-container('*ngIf'='items$ | async; let items')
+      app-item('*ngFor'='let item of items', '[item]'='item')
+  div.row
+    div.row.text-center.load-more-icon-container
+
