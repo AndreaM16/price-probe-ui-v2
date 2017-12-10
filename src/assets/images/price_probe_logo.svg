@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="620px" height="310px" viewBox="0 0 620 310" enable-background="new 0 0 620 310" xml:space="preserve">
+<polygon fill="#ECFC00" points="571.929,52.929 500.985,123.873 441.6,24.896 161.718,255.624 100,173.333 32,264 48,276 
+	100,206.667 158.282,284.376 436.4,55.103 497.015,156.127 586.071,67.071 "/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#DDDDDD" d="M300,39h20v41h-20V39z"/>
+<g>
+	<circle fill-rule="evenodd" clip-rule="evenodd" fill="#ED6B6B" cx="205" cy="175" r="50"/>
+	<circle fill-rule="evenodd" clip-rule="evenodd" fill="#ED6B6B" cx="415" cy="175" r="50"/>
+	<rect x="250" y="280" fill-rule="evenodd" clip-rule="evenodd" fill="#ED6B6B" width="120" height="20"/>
+	<circle fill-rule="evenodd" clip-rule="evenodd" fill="#ED6B6B" cx="310" cy="30" r="20"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M40,250c11.046,0,20,8.954,20,20s-8.954,20-20,20s-20-8.954-20-20
+	S28.954,250,40,250z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M100,170c11.046,0,20,8.954,20,20s-8.954,20-20,20s-20-8.954-20-20
+	S88.954,170,100,170z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M160,250c11.046,0,20,8.954,20,20s-8.954,20-20,20s-20-8.954-20-20
+	S148.954,250,160,250z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M440,20c11.046,0,20,8.954,20,20s-8.954,20-20,20
+	c-11.046,0-20-8.954-20-20S428.954,20,440,20z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M500,120c11.046,0,20,8.954,20,20s-8.954,20-20,20
+	c-11.046,0-20-8.954-20-20S488.954,120,500,120z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#055078" d="M580,40c11.046,0,20,8.954,20,20s-8.954,20-20,20s-20-8.954-20-20
+	S568.954,40,580,40z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#EEEEEE" d="M235,70h150c16.568,0,30,13.431,30,30v150
+	c0,16.569-13.432,30-30,30H235c-16.569,0-30-13.431-30-30V100C205,83.432,218.431,70,235,70z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#238FAF" d="M260,115c13.807,0,25,11.193,25,25s-11.193,25-25,25
+	c-13.807,0-25-11.193-25-25S246.193,115,260,115z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#238FAF" d="M360,100c22.091,0,40,17.909,40,40s-17.909,40-40,40
+	s-40-17.909-40-40S337.909,100,360,100z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" d="M260,125c8.284,0,15,6.716,15,15s-6.716,15-15,15s-15-6.716-15-15
+	S251.716,125,260,125z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" d="M360,110c16.568,0,30,13.431,30,30s-13.432,30-30,30
+	c-16.569,0-30-13.432-30-30S343.431,110,360,110z"/>
+<g opacity="0.5">
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M249.393,129.393c-5.858,5.858-5.858,15.355,0,21.213
+		l21.213-21.213C264.749,123.536,255.251,123.536,249.393,129.393z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M338.787,118.787c-11.716,11.716-11.716,30.711,0,42.426
+		l42.426-42.426C369.497,107.071,350.503,107.071,338.787,118.787z"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#238FAF" d="M235,200h150v40c0,5.523-4.477,10-10,10H245
+	c-5.523,0-10-4.477-10-10V200z"/>
+<g>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" d="M245,210v25c0,2.761,2.239,5,5,5h15v-30H245z"/>
+	<rect x="275" y="210" fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" width="30" height="30"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" d="M355,210v30h15c2.761,0,5-2.239,5-5v-25H355z"/>
+	<rect x="315" y="210" fill-rule="evenodd" clip-rule="evenodd" fill="#ECFC00" width="30" height="30"/>
+</g>
+</svg>
