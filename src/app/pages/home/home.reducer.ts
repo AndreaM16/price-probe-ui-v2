@@ -27,17 +27,18 @@ export const selectAllItems = createSelector(selectItems, (state: HomeState) => 
 export function homeReducer(state: HomeState = initialState, action: Action): HomeState {
   switch (action.type) {
     case homeActions.LOAD_ITEMS_SUCCESS:
-      let itemsByPayloadPage = this.itemsByPage.get(action.payload.page);
+      const currentItemsByPage = new Map(state.itemsByPage);
+      let itemsByPayloadPage = currentItemsByPage.get(action.payload.page);
       if ( itemsByPayloadPage === undefined || !itemsByPayloadPage ) {
-        this.itemsByPage.set(action.payload.page, action.payload.items);
-        itemsByPayloadPage = state.items.concat(itemsByPayloadPage);
+        currentItemsByPage.set(action.payload.page, action.payload.items);
+        itemsByPayloadPage = state.items.concat(action.payload.items);
       } else {
         itemsByPayloadPage = state.items;
       }
       return {
         ...state,
         items: [...itemsByPayloadPage],
-        itemsByPage: new Map(this.itemsByPage)
+        itemsByPage: new Map(currentItemsByPage)
       };
     default:
       return {

@@ -24,7 +24,9 @@ export class HomeService {
   public getPaginatedItems(pagination: Pagination): Observable<Item[]> {
     return this._http.get(apiItemBaseEndpoint, pagination)
       .pipe(
-        map((item) => new Item(item)),
+        map((response) => {
+          return response.items.map((item) => new Item(item));
+        }),
         catchError((error) => Observable.throw(error))
       )
     ;

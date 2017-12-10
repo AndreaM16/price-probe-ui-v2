@@ -17,6 +17,9 @@ import { AppRoutingModule } from './app.routing.module';
 /** App Configuration **/
 import { createTranslateLoader } from './config/translate-loader.config';
 
+/** App Modules **/
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { createTranslateLoader } from './config/translate-loader.config';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -32,7 +36,6 @@ import { createTranslateLoader } from './config/translate-loader.config';
         deps: [HttpClient],
       },
     }),
-
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

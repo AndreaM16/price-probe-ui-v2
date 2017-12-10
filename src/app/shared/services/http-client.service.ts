@@ -27,7 +27,6 @@ export class HttpClientService {
     if ( data !== undefined ) {
       finalUrl += '?' + this.objectToQuerystring(data);
     }
-    console.log(finalUrl);
     return this._http.get(finalUrl, { headers : this.createHeaders()});
   }
 
