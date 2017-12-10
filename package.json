@@ -11,7 +11,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n-extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/template.pot --clean --sort --format pot -m _"
   },
   "private": true,
   "dependencies": {
