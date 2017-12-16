@@ -1,12 +1,14 @@
-
-<div class="col-md-3 col-sm-6 item-feature">
-  <div class="thumbnail">
-    <div class="item-image-container"><img [src]="item.image"/></div>
-    <div class="caption">
-      <div class="item-title-container">
-        <h3>{{item.title | slice:0:20}}</h3>
-      </div>
-      <div class="item-button-container"><a class="btn btn-warning item-button-width item-margin-right-5" [href]="item.url" target="_blank">{{ 'Amazon' | translate }}</a><a class="btn btn-info item-button-width">{{ 'Details' | translate }}</a></div>
+<div class="card m-2 p-2">
+  <div class="container image-container thumbnail text-center">
+    <img class="card-img-top" [src]="item.image" onerror="this.src='../../../../assets/images/item_not_found.png'"/>
+  </div>
+  <div class="container pt-2">
+    <p class="card-text px-2">
+      <b>{{item.title | slice:0:20}}</b>
+    </p>
+    <div class="button-container pb-2">
+      <button class="btn btn-warning mx-1" [disabled]="!item.url || item.url.length === 0" (click)="goToAmazon(item)">{{ 'Amazon' | translate }}</button>
+      <button class="btn btn-info mx-1" (click)="goToDetails(item)">{{ 'Details' | translate }}</button>
     </div>
   </div>
 </div>

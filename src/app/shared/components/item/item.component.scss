@@ -1,0 +1,17 @@
+.image-container > img {
+  max-width: 194px;
+  min-width: 194px;
+  max-height: 165px;
+  min-height: 165px;
+  height: auto;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  color: white !important;
+  flex: 1;
+}
