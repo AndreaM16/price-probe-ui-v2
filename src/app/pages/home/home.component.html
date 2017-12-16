@@ -1,0 +1,16 @@
+
+<div class="item-container margin-top-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>{{ 'Items' | translate }}</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <ng-container *ngIf="items$ | async; let items">
+      <app-item *ngFor="let item of items" [item]="item"></app-item>
+    </ng-container>
+  </div>
+  <div class="row">
+    <div class="row text-center load-more-icon-container"></div>
+  </div>
+</div>

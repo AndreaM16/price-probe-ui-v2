@@ -1,0 +1,12 @@
+
+<div class="col-md-3 col-sm-6 item-feature">
+  <div class="thumbnail">
+    <div class="item-image-container"><img [src]="item.image"/></div>
+    <div class="caption">
+      <div class="item-title-container">
+        <h3>{{item.title | slice:0:20}}</h3>
+      </div>
+      <div class="item-button-container"><a class="btn btn-warning item-button-width item-margin-right-5" [href]="item.url" target="_blank">{{ 'Amazon' | translate }}</a><a class="btn btn-info item-button-width">{{ 'Details' | translate }}</a></div>
+    </div>
+  </div>
+</div>
