@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
 
-/** 3rd party **/
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-
-/** ngrx **/
-import { homeReducer } from './home.reducer';
-import { HomeEffects } from './home.effects';
-
 /** App Components **/
 import { HomeComponent } from './home.component';
+import { ItemComponent } from './item/item.component';
 
 /** App Routing **/
 import { HomeRoutingModule } from './home.routing.module';

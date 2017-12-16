@@ -8,10 +8,10 @@ import { Store } from '@ngrx/store';
 
 /** ngrx **/
 import { AppState } from '../../shared/interfaces/state.interface';
-import { selectAllItems } from './home.reducer';
+import { selectAllItems } from '../../shared/item/item.reducer';
 
 /** App Models **/
-import { Item } from '../../shared/models/item.model';
+import { Item } from '../../shared/item/item.model';
 
 @Component({
   selector: 'app-home',
