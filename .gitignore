@@ -44,4 +44,3 @@ Thumbs.db
 # App Files
 /src/app/config/api.config.ts
 proxy.config.json
-*.html

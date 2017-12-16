@@ -1,0 +1,20 @@
+.logo {
+  display: block;
+  background: url("../../../../assets/images/price_probe_logo.png") no-repeat center;
+  height: 40px;
+  width: 100px;
+  background-size: 100%;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-logo {
+  flex: 2;
+}
+
+.nav-search {
+  flex: 1;
+}

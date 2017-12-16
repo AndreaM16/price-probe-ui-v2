@@ -4,10 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "dev": "npm run puggy & ng serve --aot --proxy-config proxy.config.json",
-    "puggy": "pug src -P -w",
-    "pug": "pug src -P",
+    "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -61,7 +58,6 @@
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",
     "webpack": "^3.8.1",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "pug-cli": "^1.0.0-alpha6"
+    "webpack-bundle-analyzer": "^2.9.0"
   }
 }

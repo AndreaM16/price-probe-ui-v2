@@ -10,20 +10,18 @@ import { HttpClientService } from './services/http-client.service';
 
 /** App Components **/
 import { HeaderbarComponent } from './components/headerbar/headerbar.component';
-import { SearchComponent } from './components/headerbar/search/search.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
   declarations: [
     HeaderbarComponent,
-    SearchComponent,
     FooterComponent,
     ItemComponent,
   ],
   imports: [
+    NgbModule.forRoot(),
     TranslateModule,
-    NgbModule,
     CommonModule,
   ],
   exports: [
@@ -31,7 +29,6 @@ import { ItemComponent } from './components/item/item.component';
     NgbModule,
     CommonModule,
     HeaderbarComponent,
-    SearchComponent,
     FooterComponent,
     ItemComponent,
   ],
