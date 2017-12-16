@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-bar',
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./headerbar.component.scss']
 })
 
-export class HeaderbarComponent {}
+export class HeaderbarComponent {
+
+  constructor(private router: Router) { }
+
+  goToHomePage() {
+    this.router.navigate(['app/home']);
+  }
+
+}

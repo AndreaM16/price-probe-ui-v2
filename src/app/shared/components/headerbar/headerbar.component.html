@@ -1,12 +1,12 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-info">
-  <div class="container nav-logo">
+  <div class="container nav-logo" (click)="goToHomePage()">
     <span>
       <a class="navbar-brand logo"></a>
     </span>
   </div>
   <div class="container nav-search">
     <div class="input-group ml-5">
-      <input type="text" class="form-control" placeholder="Password">
+      <input type="text" class="form-control" placeholder="{{ 'Search by pid or url . . .' | translate }}">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">
           <i class="fa fa-search"></i>
