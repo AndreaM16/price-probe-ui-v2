@@ -6,12 +6,16 @@ import { DetailsComponent } from './details.component';
 /** App Routing **/
 import { DetailsRoutingModule } from './details.routing.module';
 
+/** App Modules **/
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   declarations: [
     DetailsComponent
   ],
   imports: [
-    DetailsRoutingModule
+    DetailsRoutingModule,
+    SharedModule
   ]
 })
 export class DetailsModule { }

@@ -1,2 +1,16 @@
-
-<h1>Details</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3> {{ 'Pid' | translate }} {{ item.id }}} </h3>
+      <h4> {{ 'Title' | translate }} {{ item.title }}} </h4>
+      <a class="btn btn-warning" [href]="item.url" target="_blank">
+        {{ 'View on Amazon' | translate }}}
+      </a>
+    </div>
+    <div class="col">
+      <div class="thumbnail">
+        <img [src]="item.image" onerror="this.src='../../../../assets/images/item_not_found.png'"/>
+      </div>
+    </div>
+  </div>
+</div>

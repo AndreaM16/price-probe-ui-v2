@@ -13,7 +13,7 @@ import { PagesComponent } from './pages.component';
         children: [
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: 'home', loadChildren: './home/home.module#HomeModule' },
-          { path: 'details', loadChildren: './details/details.module#DetailsModule' },
+          { path: 'details/:id', loadChildren: './details/details.module#DetailsModule' },
         ]
       }
     ])
