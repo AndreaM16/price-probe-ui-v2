@@ -21,3 +21,7 @@ export class PaginatedItems {
   page: number;
   items: Item[];
 }
+
+export interface ItemRequest {
+  item: string;
+}

@@ -11,7 +11,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import * as homeActions from './item.actions';
 
 /** App Models **/
-import { Item, PaginatedItems } from './item.model';
+import {Item, ItemRequest, PaginatedItems} from './item.model';
 
 /** App Services **/
 import { ItemService } from './item.service';
@@ -39,6 +39,20 @@ export class ItemEffects {
                 page: this.pagination.page,
                 items: items
               } as PaginatedItems);
+            })
+          );
+      })
+    )
+  ;
+
+  @Effect() loadCurrentItem$ = this._actions$
+    .ofType(homeActions.LOAD_CURRENT_ITEM)
+    .pipe(
+      mergeMap((action) => {
+        return this._itemService.getItemByPid({item : (<any>action).payload} as ItemRequest)
+          .pipe(
+            map((item: Item) => {
+              return new homeActions.LoadCurrentItemSuccessAction(item);
             })
           );
       })

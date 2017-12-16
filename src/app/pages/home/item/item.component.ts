@@ -41,7 +41,7 @@ export class ItemComponent implements OnInit {
   }
 
   goToDetails(item: Item) {
-    this.store.dispatch(new itemActions.SetCurrentItemAction(item));
+    this.store.dispatch(new itemActions.LoadCurrentItemSuccessAction(item));
     this.router.navigate(['app/details', item.id]);
   }
 

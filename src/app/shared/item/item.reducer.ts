@@ -45,7 +45,7 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
         items: [...itemsByPayloadPage],
         itemsByPage: new Map(currentItemsByPage)
       };
-    case itemActions.SET_CURRENT_ITEM:
+    case itemActions.LOAD_CURRENT_ITEM_SUCCESS:
       return {
         ...state,
         currentItem: action.payload
