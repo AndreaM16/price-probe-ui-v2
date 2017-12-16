@@ -17,21 +17,17 @@ import { HomeRoutingModule } from './home.routing.module';
 /** App Modules **/
 import { SharedModule } from '../../shared/shared.module';
 
-/** App Services **/
-import { HomeService } from './home.service';
-
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ItemComponent
   ],
   imports: [
     HomeRoutingModule,
     SharedModule,
-    StoreModule.forFeature('home', homeReducer),
-    EffectsModule.forFeature([HomeEffects]),
   ],
-  providers: [
-    HomeService
+  exports: [
+    ItemComponent
   ]
 })
 export class HomeModule { }

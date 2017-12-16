@@ -8,19 +8,19 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 import { Actions, Effect } from '@ngrx/effects';
 
 /** ngrx **/
-import * as homeActions from './home.actions';
+import * as homeActions from './item.actions';
 
 /** App Models **/
-import { Item, PaginatedItems } from '../../shared/models/item.model';
+import { Item, PaginatedItems } from './item.model';
 
 /** App Services **/
-import { HomeService } from './home.service';
+import { ItemService } from './item.service';
 
 /** App Interfaces **/
-import { Pagination } from '../../shared/interfaces/pagination.interface';
+import { Pagination } from '../interfaces/pagination.interface';
 
 @Injectable()
-export class HomeEffects {
+export class ItemEffects {
 
   pagination = {
     page: 0,
@@ -32,7 +32,7 @@ export class HomeEffects {
     .pipe(
       mergeMap(() => {
         this.pagination.page++;
-        return this._homeService.getPaginatedItems(this.pagination)
+        return this._itemService.getPaginatedItems(this.pagination)
           .pipe(
             map((items: Item[]) => {
               return new homeActions.LoadItemsSuccessAction({
@@ -45,5 +45,5 @@ export class HomeEffects {
     )
   ;
 
-  constructor(private _homeService: HomeService, private _actions$: Actions) { }
+  constructor(private _itemService: ItemService, private _actions$: Actions) { }
 }

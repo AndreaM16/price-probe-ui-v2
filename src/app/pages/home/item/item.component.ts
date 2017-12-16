@@ -1,8 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+/** 3rd party **/
+import { Store } from '@ngrx/store';
+
+/** ngrx **/
+import { AppState } from '../../../shared/interfaces/state.interface';
+import * as itemActions from '../../../shared/item/item.actions';
+
 /** App Models **/
-import { Item } from '../../models/item.model';
+import { Item } from '../../../shared/item/item.model';
 
 @Component({
   selector: 'app-item',
@@ -14,7 +21,7 @@ export class ItemComponent implements OnInit {
   @Input() item: Item;
   notFoundPath = '../../../../assets/images/item_not_found.png';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit() {
     if ( this.item !== undefined &&
@@ -34,6 +41,7 @@ export class ItemComponent implements OnInit {
   }
 
   goToDetails(item: Item) {
+    this.store.dispatch(new itemActions.SetCurrentItemAction(item));
     this.router.navigate(['app/details', item.id]);
   }
 

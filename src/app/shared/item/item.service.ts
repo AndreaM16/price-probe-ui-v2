@@ -7,17 +7,17 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 
 /** App Models **/
-import { Item } from '../../shared/models/item.model';
+import { Item } from './item.model';
 
 /** App Services **/
-import { HttpClientService } from '../../shared/services/http-client.service';
+import { HttpClientService } from '../services/http-client.service';
 import { apiItemBaseEndpoint } from '../../config/api.config';
 
 /** App Interfaces **/
-import { Pagination } from '../../shared/interfaces/pagination.interface';
+import { Pagination } from '../interfaces/pagination.interface';
 
 @Injectable()
-export class HomeService {
+export class ItemService {
 
   constructor(private _http: HttpClientService) {}
 

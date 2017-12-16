@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 /** ngrx **/
 import { AppState } from '../shared/interfaces/state.interface';
-import * as homeActions from './home/home.actions';
+import * as homeActions from '../shared/item/item.actions';
 
 @Component({
   selector: 'app-pages',

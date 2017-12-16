@@ -2,31 +2,36 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 /** ngrx **/
-import * as homeActions from './home.actions';
+import * as itemActions from './item.actions';
 
 /** App Models **/
-import { Item } from '../../shared/models/item.model';
+import { Item } from './item.model';
 
-export type Action = homeActions.All;
+export type Action = itemActions.All;
 
-export interface HomeState {
+export interface ItemState {
   items: Item[];
   itemsByPage: Map<number, Item[]>;
+  currentItem: Item;
 }
 
-export const initialState: HomeState = {
+export const initialState: ItemState = {
   items: [],
   itemsByPage: new Map<number, Item[]>(),
+  currentItem: {} as Item
 };
 
-export const selectItems = createFeatureSelector<HomeState>('home');
-export const selectAllItems = createSelector(selectItems, (state: HomeState) => {
+export const selectItems = createFeatureSelector<ItemState>('item');
+export const selectAllItems = createSelector(selectItems, (state: ItemState) => {
   return state.items;
 });
+export const selectCurrentItem = createSelector(selectItems, (state: ItemState) => {
+  return state.currentItem;
+});
 
-export function homeReducer(state: HomeState = initialState, action: Action): HomeState {
+export function itemReducer(state: ItemState = initialState, action: Action): ItemState {
   switch (action.type) {
-    case homeActions.LOAD_ITEMS_SUCCESS:
+    case itemActions.LOAD_ITEMS_SUCCESS:
       const currentItemsByPage = new Map(state.itemsByPage);
       let itemsByPayloadPage = currentItemsByPage.get(action.payload.page);
       if ( itemsByPayloadPage === undefined || !itemsByPayloadPage ) {
@@ -39,6 +44,11 @@ export function homeReducer(state: HomeState = initialState, action: Action): Ho
         ...state,
         items: [...itemsByPayloadPage],
         itemsByPage: new Map(currentItemsByPage)
+      };
+    case itemActions.SET_CURRENT_ITEM:
+      return {
+        ...state,
+        currentItem: action.payload
       };
     default:
       return {

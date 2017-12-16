@@ -1,6 +1,6 @@
 /** ngrx **/
-import {HomeState} from '../../pages/home/home.reducer';
+import { ItemState } from '../item/item.reducer';
 
 export interface AppState {
-  home: HomeState;
+  item: ItemState;
 }
