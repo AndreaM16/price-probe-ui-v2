@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 /** ngrx **/
 import { AppState } from '../shared/interfaces/state.interface';
-import * as homeActions from '../shared/item/item.actions';
+import * as itemActions from '../shared/item/item.actions';
 
 @Component({
   selector: 'app-pages',
@@ -17,7 +17,7 @@ export class PagesComponent implements OnInit {
   constructor(private _store: Store<AppState>) { }
 
   ngOnInit() {
-    this._store.dispatch(new homeActions.LoadItemsAction);
+    this._store.dispatch(new itemActions.LoadItemsAction);
   }
 
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 /** 3rd party **/
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 
 /** ngrx **/
 import { AppState } from '../../../shared/interfaces/state.interface';
@@ -21,7 +22,7 @@ export class ItemComponent implements OnInit {
   @Input() item: Item;
   notFoundPath = '../../../../assets/images/item_not_found.png';
 
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(private router: Router, private store: Store<AppState>, private translateService: TranslateService) {}
 
   ngOnInit() {
     if ( this.item !== undefined &&
@@ -30,7 +31,7 @@ export class ItemComponent implements OnInit {
     }
     if ( this.item !== undefined &&
       (!this.item.title || this.item.title == null || this.item.title === undefined || this.item.title.length === 0)) {
-      this.item.title = 'No title available';
+      this.item.title = this.translateService.instant('No title available');
     }
   }
 

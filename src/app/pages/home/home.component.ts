@@ -12,6 +12,7 @@ import { selectAllItems } from '../../shared/item/item.reducer';
 
 /** App Models **/
 import { Item } from '../../shared/item/item.model';
+import * as itemActions from '../../shared/item/item.actions';
 
 @Component({
   selector: 'app-home',
@@ -24,5 +25,10 @@ export class HomeComponent {
   constructor(private _store: Store<AppState>) {
     this.items$ = this._store.select(selectAllItems);
   }
+
+  loadMore() {
+    this._store.dispatch(new itemActions.LoadItemsAction);
+  }
+
 
 }
