@@ -1,16 +1,25 @@
-<div class="container mt-5 pt-5">
-  <div class="row">
-    <div class="col">
-      <h3> {{ 'PID: ' | translate }} {{ item?.id }} </h3>
-      <h4> {{ 'Title: ' | translate }} {{ item?.title }} </h4>
-      <button class="btn btn-warning mx-1" [disabled]="!item?.url || item?.url.length === 0" (click)="goToAmazon(item)">
-        {{ 'View on Amazon' | translate }}
-      </button>
-    </div>
-    <div class="col">
-      <div class="thumbnail details-image">
-        <img [src]="item?.image" onerror="this.src='../../../../assets/images/item_not_found.png'"/>
+<div class="container details-container mt-5 pt-5">
+  <div class="row details-sub-container">
+    <ng-container *ngIf="item$ | async; let item">
+      <div class="col">
+        <h3> <b>{{ "PID: " | translate }}</b> {{ item?.id }} </h3>
+        <h4> <b>{{ "Title: " | translate }}</b> {{ item?.title }} </h4>
+        <button class="btn btn-warning mx-1" [disabled]="!item?.url || item?.url.length === 0" (click)="goToAmazon(item)">
+          {{ "View on Amazon" | translate }}
+        </button>
       </div>
-    </div>
+      <div class="col">
+        <div class="thumbnail details-image">
+          <img [src]="item?.image" onerror="this.src='../../../../assets/images/item_not_found.png'"/>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="row details-sub-container my-5">
+    <ngx-charts-line-chart *ngIf="chartData$ | async as chartData"
+     [view]="view" [scheme]="colorScheme" [results]="chartData?.data" [gradient]="false"
+     [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
+     [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="true"
+    ></ngx-charts-line-chart>
   </div>
 </div>

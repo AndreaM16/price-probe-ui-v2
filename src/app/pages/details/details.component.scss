@@ -2,7 +2,21 @@
   float: right;
 }
 
+.details-image > img {
+  max-height: 250px;
+  max-width: 300px;
+}
+
 .btn {
   color: white !important;
   cursor: pointer;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-sub-container {
+  flex: 1;
 }
