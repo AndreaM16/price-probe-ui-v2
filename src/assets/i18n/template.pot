@@ -4,5 +4,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Find an details by PID or URL . . ."
+msgid "Amazon"
+msgstr ""
+
+msgid "Copyright"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "PID: "
+msgstr ""
+
+msgid "Price Probe 2017"
+msgstr ""
+
+msgid "Search by pid or url . . ."
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "View on Amazon"
 msgstr ""
