@@ -8,10 +8,11 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 import { Actions, Effect } from '@ngrx/effects';
 
 /** ngrx **/
-import * as homeActions from './item.actions';
+import * as itemActions from './item.actions';
 
 /** App Models **/
 import {Item, ItemRequest, PaginatedItems} from './item.model';
+import { PriceResponse } from '../../pages/details/price.model';
 
 /** App Services **/
 import { ItemService } from './item.service';
@@ -28,14 +29,14 @@ export class ItemEffects {
   } as Pagination;
 
   @Effect() loadItems$ = this._actions$
-    .ofType(homeActions.LOAD_ITEMS)
+    .ofType(itemActions.LOAD_ITEMS)
     .pipe(
       mergeMap(() => {
         this.pagination.page++;
         return this._itemService.getPaginatedItems(this.pagination)
           .pipe(
             map((items: Item[]) => {
-              return new homeActions.LoadItemsSuccessAction({
+              return new itemActions.LoadItemsSuccessAction({
                 page: this.pagination.page,
                 items: items
               } as PaginatedItems);
@@ -46,13 +47,27 @@ export class ItemEffects {
   ;
 
   @Effect() loadCurrentItem$ = this._actions$
-    .ofType(homeActions.LOAD_CURRENT_ITEM)
+    .ofType(itemActions.LOAD_CURRENT_ITEM)
     .pipe(
       mergeMap((action) => {
         return this._itemService.getItemByPid({item : (<any>action).payload} as ItemRequest)
           .pipe(
-            map((item: Item) => {
-              return new homeActions.LoadCurrentItemSuccessAction(item);
+            map((itemJson: any) => {
+              return new itemActions.LoadCurrentItemSuccessAction(new Item(itemJson));
+            })
+          );
+      })
+    )
+  ;
+
+  @Effect() loadPricesByItem$ = this._actions$
+    .ofType(itemActions.LOAD_PRICES_BY_ITEM)
+    .pipe(
+      mergeMap((action) => {
+        return this._itemService.getPricesByPid((<any>action).payload)
+          .pipe(
+            map((priceResponse: PriceResponse) => {
+              return new itemActions.LoadPricesByItemSuccessAction(priceResponse);
             })
           );
       })

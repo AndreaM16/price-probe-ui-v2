@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 /** ngrx **/
 import { ItemEffects } from './item/item.effects';
@@ -22,11 +23,13 @@ import { ItemService } from './item/item.service';
     EffectsModule.forFeature([ItemEffects]),
     TranslateModule,
     CommonModule,
+    NgxChartsModule,
   ],
   exports: [
     TranslateModule,
     NgbModule,
     CommonModule,
+    NgxChartsModule
   ],
   providers: [
     HttpClientService,

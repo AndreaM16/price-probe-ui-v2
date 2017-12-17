@@ -33,26 +33,23 @@ export class ItemService {
     ;
   }
 
-  public getItemByPid(itemRequest: ItemRequest): Observable<Item> {
+  public getItemByPid(itemRequest: ItemRequest): Observable<any> {
     return this._http.get(apiItemBaseEndpoint, itemRequest)
       .pipe(
-        map((response) => {
-          return new PriceResponse(response);
-        }),
         catchError((error) => Observable.throw(error))
       )
-      ;
+    ;
   }
 
   public getPricesByPid(itemRequest: ItemRequest): Observable<PriceResponse> {
     return this._http.get(apiPriceBaseEndpoint, itemRequest)
       .pipe(
         map((response) => {
-          return response.items.map((item) => new Item(item));
+          return new PriceResponse(response);
         }),
         catchError((error) => Observable.throw(error))
       )
-      ;
+    ;
   }
 
 }
