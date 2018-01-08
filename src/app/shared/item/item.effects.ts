@@ -12,7 +12,7 @@ import * as itemActions from './item.actions';
 
 /** App Models **/
 import {Item, ItemRequest, PaginatedItems} from './item.model';
-import { PriceResponse } from '../../pages/details/price.model';
+import { PriceResponse, ForecastResponse } from '../../pages/details/price.model';
 
 /** App Services **/
 import { ItemService } from './item.service';
@@ -68,6 +68,20 @@ export class ItemEffects {
           .pipe(
             map((priceResponse: PriceResponse) => {
               return new itemActions.LoadPricesByItemSuccessAction(priceResponse);
+            })
+          );
+      })
+    )
+  ;
+
+  @Effect() loadForecastByItem$ = this._actions$
+    .ofType(itemActions.LOAD_FORECAST_BY_ITEM)
+    .pipe(
+      mergeMap((action) => {
+        return this._itemService.getForecastByPid((<any>action).payload)
+          .pipe(
+            map((forecastResponse: ForecastResponse) => {
+              return new itemActions.LoadForecastByItemSuccessAction(forecastResponse);
             })
           );
       })

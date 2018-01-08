@@ -11,11 +11,11 @@ import { Item, ItemRequest } from './item.model';
 
 /** App Services **/
 import { HttpClientService } from '../services/http-client.service';
-import { apiItemBaseEndpoint, apiPriceBaseEndpoint } from '../../config/api.config';
+import { apiItemBaseEndpoint, apiPriceBaseEndpoint, apiForecastBaseEndpoint } from '../../config/api.config';
 
 /** App Interfaces **/
 import { Pagination } from '../interfaces/pagination.interface';
-import { PriceResponse } from '../../pages/details/price.model';
+import { PriceResponse, ForecastResponse } from '../../pages/details/price.model';
 
 @Injectable()
 export class ItemService {
@@ -46,6 +46,17 @@ export class ItemService {
       .pipe(
         map((response) => {
           return new PriceResponse(response);
+        }),
+        catchError((error) => Observable.throw(error))
+      )
+    ;
+  }
+
+  public getForecastByPid(itemRequest: ItemRequest): Observable<ForecastResponse> {
+    return this._http.get(apiForecastBaseEndpoint, itemRequest)
+      .pipe(
+        map((response) => {
+          return new ForecastResponse(response);
         }),
         catchError((error) => Observable.throw(error))
       )

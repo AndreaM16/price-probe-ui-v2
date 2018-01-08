@@ -3,6 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 
 /** rxjs **/
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 /** 3rd party **/
 import { Store } from '@ngrx/store';
@@ -35,7 +36,39 @@ export class DetailsComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) {
     this.item$ = this.store.select(selectCurrentItem);
-    this.chartData$ = this.store.select(selectCurrentChartData);
+    this.store.select(selectCurrentChartData).subscribe(chartData => {
+      if ( chartData.data[0].series.length > 0 && chartData.data[1].series.length ) {
+        const pricesSerie = chartData.data[0].series;
+        const forecastSerie = chartData.data[1].series;
+        let finalPricesSerie = [];
+        forecastSerie.forEach(f => {
+          for (let i = 0; i <= pricesSerie.length - 1; i++) {
+            if ( f.name === pricesSerie[i].name || pricesSerie[i].name < f.name ) {
+              finalPricesSerie = finalPricesSerie.concat(pricesSerie[i]);
+            }
+            if ( f.name > pricesSerie[i].name && f.name < pricesSerie[i + 1].name ) {
+              finalPricesSerie = finalPricesSerie.concat({
+                name: f.name,
+                value: (pricesSerie[i].value + pricesSerie[i + 1].value) / 2
+              });
+            }
+          }
+        });
+
+        this.chartData$ = of({
+          data: [
+            {
+              name: 'prices',
+              series: finalPricesSerie
+            },
+            {
+              name: 'forecast',
+              series: forecastSerie
+            }
+          ]
+        });
+      }
+    });
   }
 
   ngOnInit() {
@@ -45,6 +78,7 @@ export class DetailsComponent implements OnInit {
           params.id
         ));
         this.store.dispatch(new itemActions.LoadPricesByItemAction({item: params.id} as ItemRequest));
+        this.store.dispatch(new itemActions.LoadForecastByItemAction({item: params.id} as ItemRequest));
       }
     });
   }
