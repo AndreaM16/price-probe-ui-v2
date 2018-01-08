@@ -1,3 +1,23 @@
+export class ForecastResponse {
+  item: string;
+  name: string;
+  prices: ForecastEntry[];
+  constructor(priceJson: any) {
+    this.item = priceJson.item;
+    this.name = priceJson.name;
+    this.prices = priceJson.forecast_entries.map((price) => new ForecastEntry(price));
+  }
+}
+
+export class ForecastEntry {
+  date: string;
+  price: number;
+  constructor(priceEntryJson: any) {
+    this.date = priceEntryJson.date;
+    this.price = priceEntryJson.price;
+  }
+}
+
 export class PriceResponse {
   item: string;
   prices: PriceEntry[];

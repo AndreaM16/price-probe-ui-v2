@@ -6,7 +6,6 @@ import * as itemActions from './item.actions';
 
 /** App Models **/
 import { Item } from './item.model';
-import { PriceEntry } from '../../pages/details/price.model';
 import {ChartDataModel, SerieEntry} from '../../pages/details/price.model';
 
 export type Action = itemActions.All;
@@ -15,7 +14,6 @@ export interface ItemState {
   items: Item[];
   itemsByPage: Map<number, Item[]>;
   currentItem: Item;
-  currentPrice: PriceEntry[];
   chartData: ChartDataModel;
 }
 
@@ -23,10 +21,13 @@ export const initialState: ItemState = {
   items: [],
   itemsByPage: new Map<number, Item[]>(),
   currentItem: {} as Item,
-  currentPrice: [],
   chartData: new ChartDataModel([
       {
         name: 'prices',
+        series: []
+      },
+      {
+        name: 'forecast',
         series: []
       }
     ])
@@ -38,9 +39,6 @@ export const selectAllItems = createSelector(selectItems, (state: ItemState) => 
 });
 export const selectCurrentItem = createSelector(selectItems, (state: ItemState) => {
   return state.currentItem;
-});
-export const selectCurrentPrice = createSelector(selectItems, (state: ItemState) => {
-  return state.currentPrice;
 });
 export const selectCurrentChartData = createSelector(selectItems, (state: ItemState) => {
   return state.chartData;
@@ -82,15 +80,34 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
       };
     case itemActions.LOAD_PRICES_BY_ITEM_SUCCESS:
       const uniquePrices = uniqueByPriceInConsecutiveDays(action.payload.prices, [],  0);
+      const tmpPricesChartData = new ChartDataModel([
+        {
+          name: 'prices',
+          series: uniquePrices.map((price) => new SerieEntry(price))
+        },
+        {
+          name: 'forecast',
+          series: [...state.chartData.data[1].series]
+        },
+      ]);
       return {
         ...state,
-        currentPrice: action.payload.prices,
-        chartData: new ChartDataModel([
-          {
-            name: 'prices',
-            series: uniquePrices.map((price) => new SerieEntry(price))
-          }
-        ])
+        chartData: tmpPricesChartData
+      };
+    case itemActions.LOAD_FORECAST_BY_ITEM_SUCCESS:
+      const tmpForecastChartData = new ChartDataModel([
+        {
+          name: 'prices',
+          series: [...state.chartData.data[0].series]
+        },
+        {
+          name: 'forecast',
+          series: action.payload.prices.map((price) => new SerieEntry(price))
+        }
+      ]);
+      return {
+        ...state,
+        chartData: tmpForecastChartData
       };
     default:
       return {
