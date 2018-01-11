@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 
 /** App Models **/
-import { Item, ItemRequest } from './item.model';
+import {Item, ItemRequest, PaginatedItemsResponse} from './item.model';
 
 /** App Services **/
 import { HttpClientService } from '../services/http-client.service';
@@ -22,11 +22,11 @@ export class ItemService {
 
   constructor(private _http: HttpClientService) {}
 
-  public getPaginatedItems(pagination: Pagination): Observable<Item[]> {
+  public getPaginatedItems(pagination: Pagination): Observable<PaginatedItemsResponse> {
     return this._http.get(apiItemBaseEndpoint, pagination)
       .pipe(
         map((response) => {
-          return response.items.map((item) => new Item(item));
+          return {items: response.items.map((item) => new Item(item)), has_next: response.has_next} as PaginatedItemsResponse;
         }),
         catchError((error) => Observable.throw(error))
       )

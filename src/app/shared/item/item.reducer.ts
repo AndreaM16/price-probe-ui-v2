@@ -14,7 +14,8 @@ export interface ItemState {
   items: Item[];
   itemsByPage: Map<number, Item[]>;
   currentItem: Item;
-  chartData: ChartDataModel;
+  chartData: ChartDataModel;]
+  hasNext: boolean;
 }
 
 export const initialState: ItemState = {
@@ -30,7 +31,8 @@ export const initialState: ItemState = {
         name: 'forecast',
         series: []
       }
-    ])
+  ]),
+  hasNext: true
 };
 
 export const selectItems = createFeatureSelector<ItemState>('item');
@@ -42,6 +44,9 @@ export const selectCurrentItem = createSelector(selectItems, (state: ItemState) 
 });
 export const selectCurrentChartData = createSelector(selectItems, (state: ItemState) => {
   return state.chartData;
+});
+export const selectHasNextPaginatedItems = createSelector(selectItems, (state: ItemState) => {
+  return state.hasNext;
 });
 
 export const uniqueByPriceInConsecutiveDays = (arr: Array<any>, tmp: Array<any>, index: number) => {
@@ -108,6 +113,11 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
       return {
         ...state,
         chartData: tmpForecastChartData
+      };
+    case itemActions.LOAD_CURRENT_ITEM_HAS_NEXT_SUCCESS:
+      return {
+        ...state,
+        hasNext: action.payload
       };
     default:
       return {
