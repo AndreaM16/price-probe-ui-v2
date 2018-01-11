@@ -6,9 +6,12 @@
   </div>
   <div class="container nav-search">
     <div class="input-group ml-5">
-      <input type="text" class="form-control" placeholder="{{ 'Search by pid or url . . .' | translate }}">
+      <input
+        type="text" class="form-control" placeholder="{{ 'Search by pid or url . . .' | translate }}"
+        [(ngModel)]="search" (keyup.enter)="searchInputChange$.next(search)"
+      >
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">
+        <button class="btn btn-default" type="button" (click)="searchInputChange$.next(search)">
           <i class="fa fa-search"></i>
         </button>
       </span>
