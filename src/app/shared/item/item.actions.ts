@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 
 /** App Models **/
 import { Item, ItemRequest, PaginatedItems } from './item.model';
-import { PriceResponse } from '../../pages/details/price.model';
+import {ForecastResponse, PriceResponse} from '../../pages/details/price.model';
 
 export const LOAD_ITEMS = '[Item] Load Items';
 export const LOAD_ITEMS_SUCCESS = '[Item] Load Item Success';
@@ -55,7 +55,7 @@ export class LoadForecastByItemAction implements Action {
 
 export class LoadForecastByItemSuccessAction implements Action {
   readonly type = LOAD_FORECAST_BY_ITEM_SUCCESS;
-  constructor(public payload: PriceResponse) { }
+  constructor(public payload: ForecastResponse) { }
 }
 
 export type All

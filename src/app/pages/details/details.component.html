@@ -15,6 +15,9 @@
       </div>
     </ng-container>
   </div>
+  <ng-container *ngIf="currentForecast$ | async; let currentForecast">
+    <h3 *ngIf="currentForecast.name.length"> <b>{{ "Features: " | translate }}</b> {{ currentForecast?.name }} </h3>
+  </ng-container>
   <div class="row details-sub-container my-5">
     <ngx-charts-line-chart *ngIf="chartData$ | async as chartData"
      [view]="view" [scheme]="colorScheme" [results]="chartData?.data" [gradient]="false"
