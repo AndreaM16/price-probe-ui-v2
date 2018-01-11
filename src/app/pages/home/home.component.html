@@ -4,7 +4,7 @@
       <app-item *ngFor="let item of items" [item]="item"></app-item>
     </ng-container>
   </div>
-  <div class="container text-center mt-4">
+  <div class="container text-center mt-4" *ngIf="hasNextPaginatedItems$ | async">
     <button class="btn btn-info" (click)="loadMore()" translate> Load More </button>
   </div>
 </div>

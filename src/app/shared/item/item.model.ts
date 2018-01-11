@@ -25,3 +25,8 @@ export class PaginatedItems {
 export interface ItemRequest {
   item: string;
 }
+
+export class PaginatedItemsResponse {
+  items: Item[];
+  has_next: boolean;
+}

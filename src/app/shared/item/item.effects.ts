@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 /** rxjs **/
 import { map } from 'rxjs/operators/map';
@@ -6,12 +7,13 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 
 /** 3rd party **/
 import { Actions, Effect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 
 /** ngrx **/
 import * as itemActions from './item.actions';
 
 /** App Models **/
-import {Item, ItemRequest, PaginatedItems} from './item.model';
+import {Item, ItemRequest, PaginatedItems, PaginatedItemsResponse} from './item.model';
 import { PriceResponse, ForecastResponse } from '../../pages/details/price.model';
 
 /** App Services **/
@@ -19,6 +21,7 @@ import { ItemService } from './item.service';
 
 /** App Interfaces **/
 import { Pagination } from '../interfaces/pagination.interface';
+import {AppState} from '../interfaces/state.interface';
 
 @Injectable()
 export class ItemEffects {
@@ -35,10 +38,11 @@ export class ItemEffects {
         this.pagination.page++;
         return this._itemService.getPaginatedItems(this.pagination)
           .pipe(
-            map((items: Item[]) => {
+            map((paginatedItemsResponse: PaginatedItemsResponse) => {
+              this.store.dispatch(new itemActions.LoadCurrentItemHasNextSuccessAction(paginatedItemsResponse.has_next));
               return new itemActions.LoadItemsSuccessAction({
                 page: this.pagination.page,
-                items: items
+                items: paginatedItemsResponse.items
               } as PaginatedItems);
             })
           );
@@ -50,10 +54,13 @@ export class ItemEffects {
     .ofType(itemActions.LOAD_CURRENT_ITEM)
     .pipe(
       mergeMap((action) => {
-        return this._itemService.getItemByPid({item : (<any>action).payload} as ItemRequest)
+        const request = (<any>action).payload.item ? (<any>action).payload : {item : (<any>action).payload} as ItemRequest;
+        return this._itemService.getItemByPid(request)
           .pipe(
             map((itemJson: any) => {
-              return new itemActions.LoadCurrentItemSuccessAction(new Item(itemJson));
+              const item = new Item(itemJson);
+              this.router.navigate(['app/details', item.id]);
+              return new itemActions.LoadCurrentItemSuccessAction(item);
             })
           );
       })
@@ -88,5 +95,8 @@ export class ItemEffects {
     )
   ;
 
-  constructor(private _itemService: ItemService, private _actions$: Actions) { }
+  constructor(
+    private _itemService: ItemService, private _actions$: Actions,
+    private router: Router, private store: Store<AppState>
+  ) { }
 }

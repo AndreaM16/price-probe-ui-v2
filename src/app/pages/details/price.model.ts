@@ -3,9 +3,9 @@ export class ForecastResponse {
   name: string;
   prices: ForecastEntry[];
   constructor(priceJson: any) {
-    this.item = priceJson.item;
-    this.name = priceJson.name;
-    this.prices = priceJson.forecast_entries.map((price) => new ForecastEntry(price));
+    this.item = priceJson.item ? priceJson.item : '';
+    this.name = priceJson.name ? priceJson.name : '';
+    this.prices = priceJson.forecast_entries ? priceJson.forecast_entries.map((price) => new ForecastEntry(price)) : [];
   }
 }
 
