@@ -67,6 +67,19 @@ export class DetailsComponent implements OnInit {
             }
           ]
         });
+      } else if (chartData.data[0].series.length > 0) {
+        this.chartData$ = of({
+          data: [
+            {
+              name: 'prices',
+              series: chartData.data[0].series
+            },
+            {
+              name: 'forecast',
+              series: []
+            }
+          ]
+        });
       }
     });
   }
