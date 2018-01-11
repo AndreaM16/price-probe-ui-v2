@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 /** 3rd party **/
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +18,7 @@ import { HeaderbarComponent } from './headerbar/headerbar.component';
   imports: [
     CommonModule,
     NgbModule,
+    FormsModule,
     TranslateModule,
   ],
   exports: [
