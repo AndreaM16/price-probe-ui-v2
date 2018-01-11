@@ -6,7 +6,7 @@ import * as itemActions from './item.actions';
 
 /** App Models **/
 import { Item } from './item.model';
-import {ChartDataModel, SerieEntry} from '../../pages/details/price.model';
+import {ChartDataModel, ForecastResponse, SerieEntry} from '../../pages/details/price.model';
 
 export type Action = itemActions.All;
 
@@ -14,7 +14,8 @@ export interface ItemState {
   items: Item[];
   itemsByPage: Map<number, Item[]>;
   currentItem: Item;
-  chartData: ChartDataModel;]
+  chartData: ChartDataModel;
+  currentForecast: ForecastResponse;
   hasNext: boolean;
 }
 
@@ -32,6 +33,7 @@ export const initialState: ItemState = {
         series: []
       }
   ]),
+  currentForecast: new ForecastResponse({}),
   hasNext: true
 };
 
@@ -47,6 +49,9 @@ export const selectCurrentChartData = createSelector(selectItems, (state: ItemSt
 });
 export const selectHasNextPaginatedItems = createSelector(selectItems, (state: ItemState) => {
   return state.hasNext;
+});
+export const selectCurrentForecast = createSelector(selectItems, (state: ItemState) => {
+  return state.currentForecast;
 });
 
 export const uniqueByPriceInConsecutiveDays = (arr: Array<any>, tmp: Array<any>, index: number) => {
@@ -112,7 +117,8 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
       ]);
       return {
         ...state,
-        chartData: tmpForecastChartData
+        chartData: tmpForecastChartData,
+        currentForecast: action.payload
       };
     case itemActions.LOAD_CURRENT_ITEM_HAS_NEXT_SUCCESS:
       return {

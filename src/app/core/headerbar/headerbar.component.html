@@ -1,6 +1,6 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-info">
-  <div class="container nav-logo" (click)="goToHomePage()">
-    <span>
+  <div class="container nav-logo">
+    <span (click)="goToHomePage()" class="pointer">
       <a class="navbar-brand logo"></a>
     </span>
   </div>
@@ -11,7 +11,7 @@
         [(ngModel)]="search" (keyup.enter)="searchInputChange$.next(search)"
       >
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" (click)="searchInputChange$.next(search)">
+        <button class="btn btn-default pointer" type="button" (click)="searchInputChange$.next(search)">
           <i class="fa fa-search"></i>
         </button>
       </span>

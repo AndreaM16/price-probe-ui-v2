@@ -10,12 +10,12 @@ import { Store } from '@ngrx/store';
 
 /** ngrx **/
 import { AppState } from '../../shared/interfaces/state.interface';
-import {selectCurrentItem, selectCurrentChartData} from '../../shared/item/item.reducer';
+import {selectCurrentItem, selectCurrentChartData, selectCurrentForecast} from '../../shared/item/item.reducer';
 import * as itemActions from '../../shared/item/item.actions';
 
 /** App Models **/
 import {Item, ItemRequest} from '../../shared/item/item.model';
-import {ChartDataModel} from './price.model';
+import {ChartDataModel, ForecastResponse} from './price.model';
 
 @Component({
   selector: 'app-details',
@@ -26,6 +26,7 @@ export class DetailsComponent implements OnInit {
 
   item$: Observable<Item>;
   chartData$: Observable<ChartDataModel>;
+  currentForecast$: Observable<ForecastResponse>;
   // NGX
   view = [1000, 600];
   xAxisLabel = 'Dates';
@@ -36,6 +37,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) {
     this.item$ = this.store.select(selectCurrentItem);
+    this.currentForecast$ = this.store.select(selectCurrentForecast);
     this.store.select(selectCurrentChartData).subscribe(chartData => {
       if ( chartData.data[0].series.length > 0 && chartData.data[1].series.length ) {
         const pricesSerie = chartData.data[0].series;
