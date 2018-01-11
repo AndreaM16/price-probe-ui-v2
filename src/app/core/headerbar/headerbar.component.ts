@@ -23,6 +23,7 @@ import { ItemRequest } from '../../shared/item/item.model';
 
 export class HeaderbarComponent {
 
+  search = '';
   searchInputChange$ = new Subject<string>();
 
   constructor(private router: Router, private store: Store<AppState>) {
