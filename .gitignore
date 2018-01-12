@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-server
 /tmp
 /out-tsc
 
@@ -40,6 +41,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# App Files
-proxy.config.json

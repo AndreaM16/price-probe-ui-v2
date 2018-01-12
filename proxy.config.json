@@ -1,0 +1,8 @@
+{
+    "/api" : {
+        "target" : "http://xx.xxx.xxx.xxx:8080",
+        "secure" : false,
+        "logLevel" : "debug",
+        "changeOrigin": true
+    }
+}
