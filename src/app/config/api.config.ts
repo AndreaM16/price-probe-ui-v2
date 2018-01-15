@@ -1,4 +1,5 @@
-const apiBaseEndpoint = 'http://localhost:4200/api';
+import { apiBaseEndpoint } from '../../environments/environment';
+
 
 /** Item **/
 export const apiItemBaseEndpoint = [apiBaseEndpoint, 'item'].join('/');
