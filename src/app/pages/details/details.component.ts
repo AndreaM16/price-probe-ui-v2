@@ -45,14 +45,17 @@ export class DetailsComponent implements OnInit {
         let finalPricesSerie = [];
         forecastSerie.forEach(f => {
           for (let i = 0; i <= pricesSerie.length - 1; i++) {
-            if ( f.name === pricesSerie[i].name || pricesSerie[i].name < f.name ) {
-              finalPricesSerie = finalPricesSerie.concat(pricesSerie[i]);
-            }
-            if ( f.name > pricesSerie[i].name && f.name < pricesSerie[i + 1].name ) {
-              finalPricesSerie = finalPricesSerie.concat({
-                name: f.name,
-                value: (pricesSerie[i].value + pricesSerie[i + 1].value) / 2
-              });
+            if ( f.name !== undefined && pricesSerie[i].name !== undefined ) {
+              if ( f.name === pricesSerie[i].name || pricesSerie[i].name < f.name ) {
+                finalPricesSerie = finalPricesSerie.concat(pricesSerie[i]);
+              }
+              if ( pricesSerie[i + 1] !== undefined && pricesSerie[i + 1].name !== undefined &&
+                   f.name > pricesSerie[i].name && f.name < pricesSerie[i + 1].name ) {
+                finalPricesSerie = finalPricesSerie.concat({
+                  name: f.name,
+                  value: (pricesSerie[i].value + pricesSerie[i + 1].value) / 2
+                });
+              }
             }
           }
         });
