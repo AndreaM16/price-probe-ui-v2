@@ -8,7 +8,7 @@
     </p>
     <div class="button-container pb-2">
       <button class="btn btn-warning mx-1" [disabled]="!item.url || item.url.length === 0" (click)="goToAmazon(item)">{{ 'Amazon' | translate }}</button>
-      <button class="btn btn-info mx-1" [disabled]="!item.url || item.url.length === 0" (click)="goToDetails(item)">{{ 'Details' | translate }}</button>
+      <button class="btn btn-info mx-1" (click)="goToDetails(item)">{{ 'Details' | translate }}</button>
     </div>
   </div>
 </div>
