@@ -1,4 +1,4 @@
-const apiBaseEndpoint = 'http://54.194.199.230:4200/api';
+const apiBaseEndpoint = 'http://localhost:4200/api';
 
 /** Item **/
 export const apiItemBaseEndpoint = [apiBaseEndpoint, 'item'].join('/');
