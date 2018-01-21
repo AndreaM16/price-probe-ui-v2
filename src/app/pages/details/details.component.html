@@ -17,10 +17,29 @@
   </div>
   <ng-container *ngIf="currentForecast$ | async; let currentForecast">
     <h3 *ngIf="currentForecast.name.length"> <b>{{ "Features: " | translate }}</b> {{ currentForecast?.name }} </h3>
+    <h3 *ngIf="currentForecast.score > 0">
+      <b>{{ "Score: " | translate }}</b>
+      {{ currentForecast?.score }}
+    </h3>
+    <h3 *ngIf="currentForecast.score == 0">
+      <b>{{ "Score not yet calculated " | translate }}</b>
+    </h3>
+    <div class="col">
+      <button class="btn btn-info" (click)="showFlatten=!showFlatten">
+        {{ "Switch Views" | translate }}
+      </button>
+    </div>
   </ng-container>
-  <div class="row details-sub-container my-5">
-    <ngx-charts-line-chart *ngIf="chartData$ | async as chartData"
-     [view]="view" [scheme]="colorScheme" [results]="chartData?.data" [gradient]="false"
+  <div class="row details-sub-container my-5" *ngIf="!showFlatten">
+    <ngx-charts-line-chart *ngIf="flattenChartData$ | async as flattenChartData"
+     [view]="view" [scheme]="colorScheme" [results]="flattenChartData?.data" [gradient]="false"
+     [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
+     [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="true"
+    ></ngx-charts-line-chart>
+  </div>
+  <div class="row details-sub-container my-5" *ngIf="showFlatten">
+    <ngx-charts-line-chart *ngIf="fullChartData$ | async as fullChartData"
+     [view]="view" [scheme]="colorScheme" [results]="fullChartData?.data" [gradient]="false"
      [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
      [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="true"
     ></ngx-charts-line-chart>

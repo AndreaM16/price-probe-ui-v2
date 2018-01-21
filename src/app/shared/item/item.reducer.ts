@@ -14,7 +14,8 @@ export interface ItemState {
   items: Item[];
   itemsByPage: Map<number, Item[]>;
   currentItem: Item;
-  chartData: ChartDataModel;
+  flattenChartData: ChartDataModel;
+  fullChartData: ChartDataModel;
   currentForecast: ForecastResponse;
   hasNext: boolean;
 }
@@ -23,7 +24,7 @@ export const initialState: ItemState = {
   items: [],
   itemsByPage: new Map<number, Item[]>(),
   currentItem: {} as Item,
-  chartData: new ChartDataModel([
+  flattenChartData: new ChartDataModel([
       {
         name: 'prices',
         series: []
@@ -32,6 +33,16 @@ export const initialState: ItemState = {
         name: 'forecast',
         series: []
       }
+  ]),
+  fullChartData: new ChartDataModel([
+    {
+      name: 'prices',
+      series: []
+    },
+    {
+      name: 'forecast',
+      series: []
+    }
   ]),
   currentForecast: new ForecastResponse({}),
   hasNext: true
@@ -44,8 +55,11 @@ export const selectAllItems = createSelector(selectItems, (state: ItemState) => 
 export const selectCurrentItem = createSelector(selectItems, (state: ItemState) => {
   return state.currentItem;
 });
-export const selectCurrentChartData = createSelector(selectItems, (state: ItemState) => {
-  return state.chartData;
+export const selectCurrentFlattenChartData = createSelector(selectItems, (state: ItemState) => {
+  return state.flattenChartData;
+});
+export const selectCurrentFullChartData = createSelector(selectItems, (state: ItemState) => {
+  return state.fullChartData;
 });
 export const selectHasNextPaginatedItems = createSelector(selectItems, (state: ItemState) => {
   return state.hasNext;
@@ -90,25 +104,46 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
       };
     case itemActions.LOAD_PRICES_BY_ITEM_SUCCESS:
       const uniquePrices = uniqueByPriceInConsecutiveDays(action.payload.prices, [],  0);
-      const tmpPricesChartData = new ChartDataModel([
+      const tmpFlattenPricesChartData = new ChartDataModel([
         {
           name: 'prices',
           series: uniquePrices.map((price) => new SerieEntry(price))
         },
         {
           name: 'forecast',
-          series: [...state.chartData.data[1].series]
+          series: [...state.flattenChartData.data[1].series]
+        },
+      ]);
+      const tmpFullPricesChartData = new ChartDataModel([
+        {
+          name: 'prices',
+          series: action.payload.prices.map((price) => new SerieEntry(price))
+        },
+        {
+          name: 'forecast',
+          series: [...state.flattenChartData.data[1].series]
         },
       ]);
       return {
         ...state,
-        chartData: tmpPricesChartData
+        fullChartData: tmpFullPricesChartData,
+        flattenChartData: tmpFlattenPricesChartData
       };
     case itemActions.LOAD_FORECAST_BY_ITEM_SUCCESS:
-      const tmpForecastChartData = new ChartDataModel([
+      const tmpFlattenForecastChartData = new ChartDataModel([
         {
           name: 'prices',
-          series: [...state.chartData.data[0].series]
+          series: [...state.flattenChartData.data[0].series]
+        },
+        {
+          name: 'forecast',
+          series: action.payload.prices.map((price) => new SerieEntry(price))
+        }
+      ]);
+      const tmpFullForecastChartData = new ChartDataModel([
+        {
+          name: 'prices',
+          series: [...state.fullChartData.data[0].series]
         },
         {
           name: 'forecast',
@@ -117,7 +152,8 @@ export function itemReducer(state: ItemState = initialState, action: Action): It
       ]);
       return {
         ...state,
-        chartData: tmpForecastChartData,
+        flattenChartData: tmpFlattenForecastChartData,
+        fullChartData: tmpFullForecastChartData,
         currentForecast: action.payload
       };
     case itemActions.LOAD_CURRENT_ITEM_HAS_NEXT_SUCCESS:
