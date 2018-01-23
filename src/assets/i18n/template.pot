@@ -13,13 +13,37 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
+msgid "Features: "
+msgstr ""
+
+msgid "Load More"
+msgstr ""
+
+msgid "Manufacturer: "
+msgstr ""
+
+msgid "No manufacturer found"
+msgstr ""
+
+msgid "No title available"
+msgstr ""
+
 msgid "PID: "
 msgstr ""
 
 msgid "Price Probe 2017"
 msgstr ""
 
+msgid "Score and test size: "
+msgstr ""
+
+msgid "Score not yet calculated "
+msgstr ""
+
 msgid "Search by pid or url . . ."
+msgstr ""
+
+msgid "Switch Views"
 msgstr ""
 
 msgid "Title: "

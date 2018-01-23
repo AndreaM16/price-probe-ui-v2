@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Amazon"
@@ -21,14 +21,38 @@ msgstr "Copyright"
 msgid "Details"
 msgstr "Dettagli"
 
+msgid "Features: "
+msgstr "Features:"
+
+msgid "Load More"
+msgstr "Carica Altri"
+
+msgid "Manufacturer: "
+msgstr "Produttore:"
+
+msgid "No manufacturer found"
+msgstr "Nessun produttore trovato"
+
+msgid "No title available"
+msgstr "Titolo non disponibile"
+
 msgid "PID: "
 msgstr "PID: "
 
 msgid "Price Probe 2017"
 msgstr "Price Probe 2017"
 
+msgid "Score and test size: "
+msgstr "Punteggio e Dimensione del Test Set:"
+
+msgid "Score not yet calculated "
+msgstr "Punteggio non ancora calcolato."
+
 msgid "Search by pid or url . . ."
 msgstr "Cerca per pid o url . . ."
+
+msgid "Switch Views"
+msgstr "Vedi altro grafico."
 
 msgid "Title: "
 msgstr "Titolo:"
