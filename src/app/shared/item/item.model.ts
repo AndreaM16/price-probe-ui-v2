@@ -26,6 +26,11 @@ export interface ItemRequest {
   item: string;
 }
 
+export interface ForecastByItemAndTestSize {
+  item: string;
+  test_size: string;
+}
+
 export class PaginatedItemsResponse {
   items: Item[];
   has_next: boolean;

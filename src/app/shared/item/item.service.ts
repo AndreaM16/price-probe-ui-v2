@@ -16,6 +16,7 @@ import { apiItemBaseEndpoint, apiPriceBaseEndpoint, apiForecastBaseEndpoint } fr
 /** App Interfaces **/
 import { Pagination } from '../interfaces/pagination.interface';
 import { PriceResponse, ForecastResponse } from '../../pages/details/price.model';
+import {ForecastByItemAndTestSize} from './item.model';
 
 @Injectable()
 export class ItemService {
@@ -53,7 +54,10 @@ export class ItemService {
   }
 
   public getForecastByPid(itemRequest: ItemRequest): Observable<ForecastResponse> {
-    return this._http.get(apiForecastBaseEndpoint, itemRequest)
+    return this._http.get(apiForecastBaseEndpoint, {
+      item: itemRequest.item,
+      test_size: '10%'
+    } as ForecastByItemAndTestSize)
       .pipe(
         map((response) => {
           return new ForecastResponse(response);

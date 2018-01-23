@@ -2,11 +2,13 @@ export class ForecastResponse {
   item: string;
   name: string;
   score: number;
+  test_size: string;
   prices: ForecastEntry[];
   constructor(priceJson: any) {
     this.item = priceJson.item ? priceJson.item : '';
     this.name = priceJson.name ? priceJson.name : '';
     this.score = priceJson.score ? priceJson.score : 0.0;
+    this.score = priceJson.test_size ? priceJson.test_size : '';
     this.prices = priceJson.forecast_entries ? priceJson.forecast_entries.map((price) => new ForecastEntry(price)) : [];
   }
 }

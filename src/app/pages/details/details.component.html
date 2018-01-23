@@ -18,8 +18,8 @@
   <ng-container *ngIf="currentForecast$ | async; let currentForecast">
     <h3 *ngIf="currentForecast.name.length"> <b>{{ "Features: " | translate }}</b> {{ currentForecast?.name }} </h3>
     <h3 *ngIf="currentForecast.score > 0">
-      <b>{{ "Score: " | translate }}</b>
-      {{ currentForecast?.score }}
+      <b>{{ "Score and test size: " | translate }}</b>
+      {{ currentForecast?.score }} - {{ currentForecast?.test_size }}
     </h3>
     <h3 *ngIf="currentForecast.score == 0">
       <b>{{ "Score not yet calculated " | translate }}</b>
